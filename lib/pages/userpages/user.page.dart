@@ -74,7 +74,7 @@ class _UserPageState extends State<UserPage> {
           ),
           ElevatedButton(
             onPressed: () {
-              final docUser =Fire
+             // final docUser =Fire
             },
             child: const Text('Atualizar'),
           ),

@@ -1,5 +1,6 @@
 import 'package:chatonline/model/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 
 class UserApi{
   static Future createUser({required User usuario}) async {
@@ -13,8 +14,10 @@ class UserApi{
     final json = user.toJson();
     await docUser.set(json);
   }
-
-
+  static DateTime toDateTime(Timestamp value){
+    if(value ==null) return DateTime.now();
+    return value.toDate();
+  }
   static Stream<List<User>> readUsers() =>
       FirebaseFirestore.instance.collection('users').snapshots().map(
             (snapshot) =>
