@@ -10,6 +10,7 @@ class UserApi{
       name: usuario.name,
       age: usuario.age,
       birthday: usuario.birthday,
+      foto:usuario.foto,
     );
     final json = user.toJson();
     await docUser.set(json);

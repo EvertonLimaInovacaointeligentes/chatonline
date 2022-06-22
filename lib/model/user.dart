@@ -5,12 +5,14 @@ class User {
   final String name;
   final int age;
   final DateTime birthday;
+  final String foto;
 
   User({
     this.id = '',
     required this.name,
     required this.age,
     required this.birthday,
+    required this.foto,
   });
 
   Map<String, dynamic> toJson() => {
@@ -18,6 +20,7 @@ class User {
     'name': name,
     'age': age,
     'birthday': birthday,
+    'foto':foto,
   };
 
   static User fromJson(Map<String,dynamic> json) => User(
@@ -25,5 +28,6 @@ class User {
     name: json['name'],
     age: json['age'],
     birthday: (json['birthday'] as Timestamp).toDate(),
+    foto: json['foto'],
   );
 }

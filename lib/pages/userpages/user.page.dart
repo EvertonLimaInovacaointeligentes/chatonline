@@ -66,6 +66,7 @@ class _UserPageState extends State<UserPage> {
                 name: controllerName.text,
                 age: int.parse(controllerAge.text),
                 birthday: DateTime(2001, 7, 28),
+                foto: '',
               );
               UserApi.createUser(usuario: user);
               Navigator.pop(context);

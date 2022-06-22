@@ -33,7 +33,7 @@ class _ChatOnlinePageState extends State<ChatOnlinePage> {
           //final users= snapshot.data;
           switch (snapshot.connectionState) {
             case ConnectionState.waiting:
-              return Center(child: CircularProgressIndicator(),);
+              return const Center(child: CircularProgressIndicator(),);
             default:
               if (snapshot.hasError) {
                 print(snapshot.error);
@@ -46,7 +46,7 @@ class _ChatOnlinePageState extends State<ChatOnlinePage> {
                 return Column(
                   children: [
                     HeaderUserPage(users: users),
-
+                    const BodyUserPage(),
                   ],
                 );
               }
