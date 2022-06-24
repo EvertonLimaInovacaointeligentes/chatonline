@@ -21,65 +21,67 @@ class _UserPageState extends State<UserPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cadastar Usuário'),
+        title: const Text('Cadastar Usuário'),
       ),
-      body: ListView(
-        padding: EdgeInsets.all(16),
-        children: [
-          TextField(
-            controller: controllerName,
-            decoration: InputDecoration(
-                border: InputBorder.none,
-                icon: Icon(Icons.person),
-                hintText: 'Informe o nome'),
-            //decoration: decoration('nome'),
-          ),
-          const SizedBox(
-            height: 24,
-          ),
-          TextField(
-            controller: controllerAge,
-            decoration: InputDecoration(
-                border: InputBorder.none,
-                icon: Icon(Icons.timelapse_outlined),
-                hintText: 'Informe a idade'),
-            keyboardType: TextInputType.number,
-          ),
-          const SizedBox(
-            height: 24,
-          ),
-          DateTimeField(
+      body: SafeArea(
+        child: ListView(
+          padding: const EdgeInsets.all(16),
+          children: [
+            TextField(
+              controller: controllerName,
               decoration: const InputDecoration(
-                  hintText: 'Favor escolhar a data de anivarsario!'),
-              selectedDate: selectedDate,
-              onDateSelected: (DateTime value) {
-                setState(() {
-                  selectedDate = value;
-                });
-              }),
-          const SizedBox(
-            height: 32,
-          ),
-          ElevatedButton(
-            onPressed: () {
-              final user = User(
-                name: controllerName.text,
-                age: int.parse(controllerAge.text),
-                birthday: DateTime(2001, 7, 28),
-                foto: '',
-              );
-              UserApi.createUser(usuario: user);
-              Navigator.pop(context);
-            },
-            child: const Text('Create'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-             // final docUser =Fire
-            },
-            child: const Text('Atualizar'),
-          ),
-        ],
+                  border: InputBorder.none,
+                  icon: Icon(Icons.person),
+                  hintText: 'Informe o nome'),
+              //decoration: decoration('nome'),
+            ),
+            const SizedBox(
+              height: 24,
+            ),
+            TextField(
+              controller: controllerAge,
+              decoration: const InputDecoration(
+                  border: InputBorder.none,
+                  icon: Icon(Icons.timelapse_outlined),
+                  hintText: 'Informe a idade'),
+              keyboardType: TextInputType.number,
+            ),
+            const SizedBox(
+              height: 24,
+            ),
+            DateTimeField(
+                decoration: const InputDecoration(
+                    hintText: 'Favor escolhar a data de anivarsario!'),
+                selectedDate: selectedDate,
+                onDateSelected: (DateTime value) {
+                  setState(() {
+                    selectedDate = value;
+                  });
+                }),
+            const SizedBox(
+              height: 32,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                final user = User(
+                  name: controllerName.text,
+                  age: int.parse(controllerAge.text),
+                  birthday: DateTime(2001, 7, 28),
+                  foto: 'https://leopoldinense.com.br/images/colaborador/1/1_10062016110253.jpg',
+                );
+                UserApi.createUser(usuario: user);
+                Navigator.pop(context);
+              },
+              child: const Text('Create'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+               // final docUser =Fire
+              },
+              child: const Text('Atualizar'),
+            ),
+          ],
+        ),
       ),
     );
   }
